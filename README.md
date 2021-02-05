@@ -1,9 +1,12 @@
 ## Init project
 
+`add .env file`
+
 ```
 git clone https://github.com/fabiot21/apollo-express-auth.git
 cd apollo-express-auth
 npm install
+npm run dev
 ```
 
 ## .env file structure
