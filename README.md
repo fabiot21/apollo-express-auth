@@ -13,5 +13,5 @@ ENV=dev
 PORT=5151
 DB_USER=user21
 DB_PWD=sdfsergs234rrge4r
-DB=http://localhost:12123/
+DB=http://localhost:1212/
 ```
