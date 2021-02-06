@@ -57,7 +57,7 @@ export default {
       const user = await User.findOne({ email });
 
       if (user) {
-        throw new Error("El usuario ya existe");
+        throw new Error("This user already exists!");
       }
 
       const hashpwd = await bcrypt.hash(password, 12);
@@ -77,6 +77,25 @@ export default {
       return {
         user: resultUser,
         token,
+      };
+    },
+
+    updateUser: async (_, { userInput, id }, { User, user }) => {
+      if (id !== user.id) {
+        throw new ApolloError("Denied Access", 401);
+      }
+      let targetUser = await User.findById(id);
+      targetUser.firstName = userInput.firstName || targetUser.firstName;
+      targetUser.lastName = userInput.lastName || targetUser.lastName;
+      targetUser.email = userInput.email || targetUser.email;
+
+      let resultUser = await targetUser.save();
+
+      // Format user
+      resultUser = formatUser(resultUser);
+
+      return {
+        ...resultUser,
       };
     },
   },
