@@ -4,7 +4,7 @@
 
 ```
 git clone https://github.com/fabiot21/apollo-express-auth.git
-cd apollo-express-auth
+cd apollo-express-auth-mongoose
 npm install
 npm run dev
 ```
